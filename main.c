@@ -4,33 +4,7 @@
 #include <locale.h>
 #include <wchar.h>
 
-typedef struct
-{
-    int day, month, year, hour, minute, seconds;
-} tDateTime;
-
-struct Client {
-    wchar_t Full_Name[100];
-    long long int phone_number;
-    tDateTime reg_date;
-    tDateTime use_date;
-    int peny;
-    int credit;
-};
-
-struct Service {
-    char name[100];
-    char code[10];
-    char tariff[10];
-    char interval[10];
-};
-
-struct Usage {
-    long long int phone_number;
-    int service_code;
-    int duration;
-    tDateTime call_time;
-};
+#include "types.h"
 
 void get_ClientList(struct Client *Clients,wchar_t *input_string){
     swscanf(input_string, L"%99[^,],%lld,%d.%d.%d,%d.%d.%d,%d,%d",
@@ -113,12 +87,7 @@ int main() {
     }
     
     
-    struct Foundclient{
-        wchar_t Name[100];
-        long long int phone_number;
-        tDateTime start;
-        tDateTime end;
-    }pClient;
+    struct Foundclient pClient;
 
     wchar_t input_string[100];
     fgetws(input_string,100,file_ptr3);
